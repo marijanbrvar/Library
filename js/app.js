@@ -1,1 +1,9 @@
-alert("hello");
+let myLibrary = [];
+
+function Book() {
+
+}
+
+function addBookToLibrary() {
+    
+}
