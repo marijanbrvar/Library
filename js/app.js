@@ -59,3 +59,11 @@ search.addEventListener('keyup', () => {
   const term = search.value.trim();
   filterBooks(term);
 });
+
+newBook.addEventListener('click', () => {
+  addForm.classList.remove('d-none');
+});
+
+hideForm.addEventListener('click', () => {
+  addForm.classList.add('d-none');
+});
