@@ -30,14 +30,24 @@ addForm.addEventListener('submit', (e) => {
     addForm.title.value.trim(),
     addForm.author.value.trim(),
     addForm.pages.value.trim(),
-    addForm.readed.checked
+    addForm.readed.checked,
   );
 
   addBookToLibrary(book);
   addForm.reset();
 });
 
+const filterBooks = (term) => {
+  Array.from(list.children)
+    .filter((book) => !book.textContent.includes(term))
+    .forEach((book) => book.classList.add('d-none'));
+
+  Array.from(list.children)
+    .filter((book) => book.textContent.includes(term))
+    .forEach((book) => book.classList.remove('d-none'));
+};
+
 search.addEventListener('keyup', () => {
   const term = search.value.trim();
-  console.log(term);
+  filterBooks(term);
 });
