@@ -34,7 +34,7 @@ addForm.addEventListener('submit', (e) => {
     addForm.title.value.trim(),
     addForm.author.value.trim(),
     addForm.pages.value.trim(),
-    addForm.readed.checked,
+    addForm.readed.checked
   );
 
   addBookToLibrary(book);
@@ -64,6 +64,18 @@ search.addEventListener('keyup', () => {
 
 newBook.addEventListener('click', () => {
   addForm.classList.remove('d-none');
+});
+
+readToggle.addEventListener('click', (e) => {
+  console.log(e.target.checked);
+});
+
+readStatusToggle.addEventListener('click', (e) => {
+  if (e.target.textContent === 'To Read') {
+    e.target.innerText = 'Read';
+  } else {
+    e.target.innerText = 'To Read';
+  }
 });
 
 hideForm.addEventListener('click', () => {
