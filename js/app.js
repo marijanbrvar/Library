@@ -1,1 +1,2 @@
-console.log("hello");
+const addForm = document.querySelector('.add')
+console.log(addForm)
