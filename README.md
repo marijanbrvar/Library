@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Book library build with Java Script
 
 > One paragraph statement about the project.
 
