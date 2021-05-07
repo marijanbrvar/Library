@@ -36,3 +36,8 @@ addForm.addEventListener('submit', (e) => {
   addBookToLibrary(book);
   addForm.reset();
 });
+
+search.addEventListener('keyup', () => {
+  const term = search.value.trim();
+  console.log(term);
+});
