@@ -1,6 +1,8 @@
 const addForm = document.querySelector('.add');
 const list = document.querySelector('.books');
 const search = document.querySelector('.search input');
+const newBook = document.querySelector('.newbook');
+const hideForm = document.querySelector('.hideform');
 
 function Book(title, author, pages, read) {
   this.title = title;
