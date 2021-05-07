@@ -37,6 +37,12 @@ addForm.addEventListener('submit', (e) => {
   addForm.reset();
 });
 
+list.addEventListener('click', (e) => {
+  if (e.target.classList.contains('remove')) {
+    e.target.parentElement.remove();
+  }
+});
+
 const filterBooks = (term) => {
   Array.from(list.children)
     .filter((book) => !book.textContent.includes(term))
