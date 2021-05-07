@@ -42,7 +42,7 @@ Additional description of the project and its features.
 - Twitter: [@twitterhandle](https://twitter.com/marijanbrvar)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/marijanbrvar)
 
-👤 Donat UWAMAHORO
+👤 DONAT UWAMAHORO
 
 - Github: [@githubhandle)](https://github.com/uwadonat)
 - Linkedin: [@twitterhandle)](https://www.linkedin.com/in/uwadonat)
