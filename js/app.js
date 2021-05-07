@@ -3,7 +3,6 @@ const list = document.querySelector('.books');
 const search = document.querySelector('.search input');
 const newBook = document.querySelector('.newbook');
 const hideForm = document.querySelector('.hideform');
-const readToggle = document.querySelector('.readed');
 const readStatusToggle = document.querySelector('.status');
 
 function Book(title, author, pages, read) {
@@ -34,7 +33,7 @@ addForm.addEventListener('submit', (e) => {
     addForm.title.value.trim(),
     addForm.author.value.trim(),
     addForm.pages.value.trim(),
-    addForm.readed.checked
+    addForm.readed.checked,
   );
 
   addBookToLibrary(book);
@@ -49,12 +48,12 @@ list.addEventListener('click', (e) => {
 
 const filterBooks = (term) => {
   Array.from(list.children)
-    .filter((book) => !book.textContent.includes(term))
-    .forEach((book) => book.classList.add('d-none'));
+    .filter(book => !book.textContent.includes(term))
+    .forEach(book => book.classList.add('d-none'));
 
   Array.from(list.children)
-    .filter((book) => book.textContent.includes(term))
-    .forEach((book) => book.classList.remove('d-none'));
+    .filter(book => book.textContent.includes(term))
+    .forEach(book => book.classList.remove('d-none'));
 };
 
 search.addEventListener('keyup', () => {
@@ -64,10 +63,6 @@ search.addEventListener('keyup', () => {
 
 newBook.addEventListener('click', () => {
   addForm.classList.remove('d-none');
-});
-
-readToggle.addEventListener('click', (e) => {
-  console.log(e.target.checked);
 });
 
 readStatusToggle.addEventListener('click', (e) => {
