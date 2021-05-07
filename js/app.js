@@ -3,6 +3,8 @@ const list = document.querySelector('.books');
 const search = document.querySelector('.search input');
 const newBook = document.querySelector('.newbook');
 const hideForm = document.querySelector('.hideform');
+const readToggle = document.querySelector('.readed');
+const readStatusToggle = document.querySelector('.status');
 
 function Book(title, author, pages, read) {
   this.title = title;
