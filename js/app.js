@@ -9,7 +9,24 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary() {
-    let book = 
+    //get value from form
+    var title = document.getElementById('title').value;
+    var author = document.getElementById('author').Value;
+    var pages = document.getElementById('pages').Value;
+    var read = document.getElementById('title').Value;
+     
+    //append data in the array
+   let boo =[title, author, pages, read]
+    myLibrary.push(boo);
+    var pval ="";
+    for (i = 0; i < myLibrary.length; i++) 
+      {
+          pval = pval + myLibrary[i] + "<br/>";
+      }
 
-    
+      //display array data
+      document.getElementById('show').innerHTML = pval;
+
+
 }
+
