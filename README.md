@@ -42,6 +42,12 @@ Additional description of the project and its features.
 - Twitter: [@twitterhandle](https://twitter.com/marijanbrvar)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/marijanbrvar)
 
+👤 Donat UWAMAHORO
+
+- Github: [@githubhandle)](https://github.com/uwadonat)
+- Linkedin: [@twitterhandle)](https://www.linkedin.com/in/uwadonat)
+- Twitter: [LinkedIn)](https://twitter.com/uwahoroDonat)
+
 ![Marijan's GitHub stats](https://github-readme-stats.vercel.app/api?username=marijanbrvar&count_private=true&theme=dark&show_icons=true)
 
 ## 🤝 Contributing
