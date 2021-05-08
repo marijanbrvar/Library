@@ -1,9 +1,12 @@
-const hid = document.querySelector('.bt')
-const addForm = document.querySelector('.form')
+const hid = document.querySelector('.bt');
+const addForm = document.querySelector('.form');
 
-// hid.onclick = function() {
+// hid.onClick = function() {
 //     addForm.setAttribute('style','left: 10px');
 // }
+hid.addEventListener('click', () => {
+    addForm.classList.remove('d-none');
+});
 console.log(addForm)
 
 
