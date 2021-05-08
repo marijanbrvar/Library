@@ -1,3 +1,12 @@
+const hid = document.querySelector('.bt')
+const addForm = document.querySelector('.form')
+
+// hid.onclick = function() {
+//     addForm.setAttribute('style','left: 10px');
+// }
+console.log(addForm)
+
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
