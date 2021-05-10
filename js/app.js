@@ -5,7 +5,9 @@ const newBook = document.querySelector('.newbook');
 const hideForm = document.querySelector('.hideform');
 
 const books = [
-  { title: 'The Lord of the Rings', author: 'J. R. R. Tolkien', pages: 1197, read: false, id: 1 },
+  {
+    title: 'The Lord of the Rings', author: 'J. R. R. Tolkien', pages: 1197, read: false, id: 1,
+  },
 ];
 
 function Book(title, author, pages, read, id) {
