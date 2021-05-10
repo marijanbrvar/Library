@@ -74,14 +74,17 @@ newBook.addEventListener('click', () => {
   addForm.classList.remove('d-none');
 });
 
-readStatusToggle.addEventListener('click', (e) => {
-  if (e.target.textContent === 'To Read') {
-    e.target.innerText = 'Read';
+const toggle = (id) => {
+  let idx  = books.findIndex(x => x.id === id )
+  if (books[idx].read) {
+    books[idx].read = !books[idx].read
   } else {
-    e.target.innerText = 'To Read';
+    books[idx].read = !books[idx].read
   }
-});
+  addBookToLibrary()
+}
 
 hideForm.addEventListener('click', () => {
   addForm.classList.add('d-none');
 });
+
