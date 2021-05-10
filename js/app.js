@@ -4,79 +4,82 @@ const search = document.querySelector('.search input');
 const newBook = document.querySelector('.newbook');
 const hideForm = document.querySelector('.hideform');
 
-const books = [
-  {
-    title: 'The Lord of the Rings', author: 'J. R. R. Tolkien', pages: 1197, read: false, id: 1,  
-  },
-];
-
-function Book(title, author, pages, read, id) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
-}
-
-const addBookToLibrary = () => {
-  list.innerHTML = '<div></div>';
-  books.forEach((book) => {
-    list.innerHTML += `
-      <div class="list-group-item">
-          <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1 title"><small>Title: </small><br>${book.title}</h5>
-          <small class="pages">#pages: (${book.pages})</small>
-          </div>
-          <p class="mb-1 author"><small>Author: </small><br>${book.author}</p>
-          <small class="status" onCLick="toggle(${book.id})">${book.read ? 'Read' : 'To Read'}</small>
-          <small class="float-end remove">Remove</small>
-      </div>
-      `;
-  });
-};
-
-// eslint-disable-next-line no-unused-vars
-function toggle(id) {
-  const idx = books.findIndex((x) => x.id === id);
-  if (books[idx].read) {
-    books[idx].read = !books[idx].read;
-  } else {
-    books[idx].read = !books[idx].read;
+class Book {
+  constructor(book) {
+    this.title = book.title;
+    this.author = book.author;
+    this.pages = book.pages;
+    this.read = book.read;
   }
-  addBookToLibrary();
+
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
 
-addForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const book = new Book(
-    addForm.title.value.trim(),
-    addForm.author.value.trim(),
-    addForm.pages.value.trim(),
-    addForm.read.checked,
-    books.length + 1,
-  );
+let books = [];
+const storedBooks = localStorage.getItem('books');
 
+if (storedBooks) {
+  books = JSON.parse(storedBooks).map(book => new Book(book));
+}
+
+function addBookToLibrary(book) {
   books.push(book);
-  addBookToLibrary();
+  localStorage.setItem('books', JSON.stringify(books));
+}
+
+function displayBooks() {
+  list.innerHTML = books.map(
+    (book, i) => `
+    <div class="list-group-item">
+      <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1 title"><small>Title: </small><br>${book.title}</h5>
+      <small class="pages">#pages: (${book.pages})</small>
+      </div>
+      <p class="mb-1 author"><small>Author: </small><br>${book.author}</p>
+      <small class="status" data-index="${i}">${book.read ? 'Read' : 'To Read'}</small>
+      <small class="float-end remove" data-index="${i}">Remove</small>
+    </div>
+    `,
+  );
+}
+
+function addBook(e) {
+  e.preventDefault();
+  const book = new Book({
+    title: addForm.title.value.trim(),
+    author: addForm.author.value.trim(),
+    pages: addForm.pages.value.trim(),
+    read: addForm.read.checked,
+  });
+
+  addBookToLibrary(book);
   addForm.reset();
-});
+  displayBooks();
+}
 
-list.addEventListener('click', (e) => {
-  if (e.target.classList.contains('remove')) {
-    const title = e.target.parentElement.querySelector('.title').textContent.replace(/Title: /, '');
-    books.splice(books.findIndex((b) => b.title === title), 1);
-    e.target.parentElement.remove();
-  }
-});
-
+function removeBook(e) {
+  if (!e.target.matches('.remove')) return;
+  books.splice(e.target.dataset.index, 1);
+  localStorage.setItem('books', JSON.stringify(books));
+  displayBooks();
+}
+function toggleRead(e) {
+  if (!e.target.matches('.status')) return;
+  const idx = e.target.dataset.index;
+  books[idx].toggleRead();
+  localStorage.setItem('books', JSON.stringify(books));
+  displayBooks();
+}
 const filterBooks = (term) => {
   Array.from(list.children)
-    .filter((book) => !book.textContent.includes(term))
-    .forEach((book) => book.classList.add('d-none'));
+    .filter(book => !book.textContent.includes(term))
+    .forEach(book => book.classList.add('d-none'));
 
   Array.from(list.children)
-    .filter((book) => book.textContent.includes(term))
-    .forEach((book) => book.classList.remove('d-none'));
+    .filter(book => book.textContent.includes(term))
+    .forEach(book => book.classList.remove('d-none'));
 };
 
 search.addEventListener('keyup', () => {
@@ -91,3 +94,11 @@ newBook.addEventListener('click', () => {
 hideForm.addEventListener('click', () => {
   addForm.classList.add('d-none');
 });
+
+list.addEventListener('click', removeBook);
+
+list.addEventListener('click', toggleRead);
+
+addForm.addEventListener('submit', addBook);
+
+displayBooks();
