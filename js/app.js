@@ -4,7 +4,9 @@ const search = document.querySelector('.search input');
 const newBook = document.querySelector('.newbook');
 const hideForm = document.querySelector('.hideform');
 
-const books = [{ title: 'The Lord of the Rings', author: 'J. R. R. Tolkien', pages: 1197, read: false, id: 1 }];
+const books = [
+  { title: 'The Lord of the Rings', author: 'J. R. R. Tolkien', pages: 1197, read: false, id: 1 }
+];
 
 function Book(title, author, pages, read, id) {
   this.title = title;
@@ -33,7 +35,7 @@ const addBookToLibrary = () => {
 
 // eslint-disable-next-line no-unused-vars
 function toggle(id) {
-  const idx = books.findIndex(x => x.id === id);
+  const idx = books.findIndex((x) => x.id === id);
   if (books[idx].read) {
     books[idx].read = !books[idx].read;
   } else {
@@ -60,19 +62,19 @@ addForm.addEventListener('submit', (e) => {
 list.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove')) {
     const title = e.target.parentElement.querySelector('.title').textContent.replace(/Title: /, '');
-    books.splice(books.findIndex(b => b.title === title), 1);
+    books.splice(books.findIndex((b) => b.title === title), 1);
     e.target.parentElement.remove();
   }
 });
 
 const filterBooks = (term) => {
   Array.from(list.children)
-    .filter(book => !book.textContent.includes(term))
-    .forEach(book => book.classList.add('d-none'));
+    .filter((book) => !book.textContent.includes(term))
+    .forEach((book) => book.classList.add('d-none'));
 
   Array.from(list.children)
-    .filter(book => book.textContent.includes(term))
-    .forEach(book => book.classList.remove('d-none'));
+    .filter((book) => book.textContent.includes(term))
+    .forEach((book) => book.classList.remove('d-none'));
 };
 
 search.addEventListener('keyup', () => {
@@ -87,4 +89,3 @@ newBook.addEventListener('click', () => {
 hideForm.addEventListener('click', () => {
   addForm.classList.add('d-none');
 });
-
