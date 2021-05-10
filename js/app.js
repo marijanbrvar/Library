@@ -30,6 +30,7 @@ const addBookToLibrary = () => {
       `;
   });
 };
+
 // eslint-disable-next-line no-unused-vars
 function toggle(id) {
   const idx = books.findIndex(x => x.id === id);
