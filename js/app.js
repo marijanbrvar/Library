@@ -38,15 +38,19 @@ addForm.addEventListener('submit', (e) => {
     addForm.title.value.trim(),
     addForm.author.value.trim(),
     addForm.pages.value.trim(),
-    addForm.readed.checked,
+    addForm.read.checked,
+    id = books.length + 1
   );
 
-  addBookToLibrary(book);
+  books.push(book);
+  addBookToLibrary()
   addForm.reset();
 });
 
 list.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove')) {
+    let title = e.target.parentElement.querySelector('.title').textContent.replace(/Title: /, '')
+    books.splice(books.findIndex(b => b.title === title), 1 )
     e.target.parentElement.remove();
   }
 });
