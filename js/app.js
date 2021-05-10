@@ -21,7 +21,7 @@ let books = [];
 const storedBooks = localStorage.getItem('books');
 
 if (storedBooks) {
-  books = JSON.parse(storedBooks).map(book => new Book(book));
+  books = JSON.parse(storedBooks).map((book) => new Book(book));
 }
 
 function addBookToLibrary(book) {
@@ -74,12 +74,12 @@ function toggleRead(e) {
 }
 const filterBooks = (term) => {
   Array.from(list.children)
-    .filter(book => !book.textContent.includes(term))
-    .forEach(book => book.classList.add('d-none'));
+    .filter((book) => !book.textContent.includes(term))
+    .forEach((book) => book.classList.add('d-none'));
 
   Array.from(list.children)
-    .filter(book => book.textContent.includes(term))
-    .forEach(book => book.classList.remove('d-none'));
+    .filter((book) => book.textContent.includes(term))
+    .forEach((book) => book.classList.remove('d-none'));
 };
 
 search.addEventListener('keyup', () => {
