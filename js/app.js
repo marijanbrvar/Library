@@ -45,7 +45,7 @@ const displayBooks = () => {
   );
 }
 
-function addBook(e) {
+const addBook = (e) => {
   e.preventDefault();
   const book = new Book({
     title: addForm.title.value.trim(),
