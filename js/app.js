@@ -27,7 +27,7 @@ if (storedBooks) {
 const addBookToLibrary = (book) => {
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
-}
+};
 
 const displayBooks = () => {
   list.innerHTML = books.map(
@@ -43,7 +43,7 @@ const displayBooks = () => {
     </div>
     `,
   );
-}
+};
 
 const addBook = (e) => {
   e.preventDefault();
@@ -57,21 +57,21 @@ const addBook = (e) => {
   addBookToLibrary(book);
   addForm.reset();
   displayBooks();
-}
+};
 
 const removeBook = (e) => {
   if (!e.target.matches('.remove')) return;
   books.splice(e.target.dataset.index, 1);
   localStorage.setItem('books', JSON.stringify(books));
   displayBooks();
-}
+};
 const toggleRead = (e) => {
   if (!e.target.matches('.status')) return;
   const idx = e.target.dataset.index;
   books[idx].toggleRead();
   localStorage.setItem('books', JSON.stringify(books));
   displayBooks();
-}
+};
 const filterBooks = (term) => {
   Array.from(list.children)
     .filter((book) => !book.textContent.includes(term))
