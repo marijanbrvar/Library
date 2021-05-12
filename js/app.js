@@ -24,12 +24,12 @@ if (storedBooks) {
   books = JSON.parse(storedBooks).map((book) => new Book(book));
 }
 
-function addBookToLibrary(book) {
+const addBookToLibrary = (book) => {
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
 }
 
-function displayBooks() {
+const displayBooks = () => {
   list.innerHTML = books.map(
     (book, i) => `
     <div class="list-group-item">
