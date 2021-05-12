@@ -59,13 +59,13 @@ const addBook = (e) => {
   displayBooks();
 }
 
-function removeBook(e) {
+const removeBook = (e) => {
   if (!e.target.matches('.remove')) return;
   books.splice(e.target.dataset.index, 1);
   localStorage.setItem('books', JSON.stringify(books));
   displayBooks();
 }
-function toggleRead(e) {
+const toggleRead = (e) => {
   if (!e.target.matches('.status')) return;
   const idx = e.target.dataset.index;
   books[idx].toggleRead();
