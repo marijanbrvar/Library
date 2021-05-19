@@ -24,12 +24,12 @@ if (storedBooks) {
   books = JSON.parse(storedBooks).map((book) => new Book(book));
 }
 
-function addBookToLibrary(book) {
+const addBookToLibrary = (book) => {
   books.push(book);
   localStorage.setItem('books', JSON.stringify(books));
-}
+};
 
-function displayBooks() {
+const displayBooks = () => {
   list.innerHTML = books.map(
     (book, i) => `
     <div class="list-group-item">
@@ -43,9 +43,9 @@ function displayBooks() {
     </div>
     `,
   );
-}
+};
 
-function addBook(e) {
+const addBook = (e) => {
   e.preventDefault();
   const book = new Book({
     title: addForm.title.value.trim(),
@@ -57,21 +57,21 @@ function addBook(e) {
   addBookToLibrary(book);
   addForm.reset();
   displayBooks();
-}
+};
 
-function removeBook(e) {
+const removeBook = (e) => {
   if (!e.target.matches('.remove')) return;
   books.splice(e.target.dataset.index, 1);
   localStorage.setItem('books', JSON.stringify(books));
   displayBooks();
-}
-function toggleRead(e) {
+};
+const toggleRead = (e) => {
   if (!e.target.matches('.status')) return;
   const idx = e.target.dataset.index;
   books[idx].toggleRead();
   localStorage.setItem('books', JSON.stringify(books));
   displayBooks();
-}
+};
 const filterBooks = (term) => {
   Array.from(list.children)
     .filter((book) => !book.textContent.includes(term))
